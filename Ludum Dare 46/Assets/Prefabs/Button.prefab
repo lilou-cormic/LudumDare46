@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 4184024935727083683}
   - component: {fileID: 4184024935727083686}
   - component: {fileID: 1194648851583326724}
-  - component: {fileID: -1542789877766270646}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -68,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f6408611036b71b4582953f778645916, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -156,22 +155,6 @@ MonoBehaviour:
   SelectedSound: {fileID: 8300000, guid: 29fb04ee2eabc1f48ab52cb30b0ad693, type: 3}
   LabelText: {fileID: 4184024935688225819}
   Label: Button
---- !u!114 &-1542789877766270646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4184024935727083693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15163366e7f534842ac05950da149bdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_scaleMode: 1
-  m_relativeFilePath: Resources/Button192x64.png
-  m_missingFileIsAnError: 0
-  m_clearColorAfterLoad: 1
 --- !u!1001 &2773288880669807975
 PrefabInstance:
   m_ObjectHideFlags: 0
