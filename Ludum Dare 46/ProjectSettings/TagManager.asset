@@ -13,13 +13,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - PlayerBullet
+  - EnemyBullet
+  - Level
+  - Item
+  - Base
   - 
   - 
   - 
@@ -38,6 +38,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 424213209
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Level
+    uniqueID: 3855082043
+    locked: 0
+  - name: Bullets
+    uniqueID: 3758459839
+    locked: 0
+  - name: Spawnables
+    uniqueID: 4288049951
+    locked: 0
+  - name: Player
+    uniqueID: 3685573837
     locked: 0
