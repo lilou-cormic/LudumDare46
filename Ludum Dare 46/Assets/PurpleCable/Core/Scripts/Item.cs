@@ -23,6 +23,7 @@ namespace PurpleCable
         /// Indicates if the item has already been taken [To manage multi-frames / simultanious collisions]
         /// </summary>
         private bool _isTaken = false;
+        protected bool IsTaken => _isTaken;
 
         #endregion
 

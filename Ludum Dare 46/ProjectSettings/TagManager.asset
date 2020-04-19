@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Level
   layers:
   - Default
   - TransparentFX
@@ -13,13 +14,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - PlayerBullets
+  - EnemyBullets
+  - Level
+  - Item
+  - TreeOfLife
   - 
   - 
   - 
@@ -38,6 +39,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3384871133
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Level
+    uniqueID: 2463457405
+    locked: 0
+  - name: TreeOfLife
+    uniqueID: 212734081
+    locked: 0
+  - name: Elements
+    uniqueID: 3894730965
+    locked: 0
+  - name: Bullets
+    uniqueID: 2321619159
+    locked: 0
+  - name: Player
+    uniqueID: 100021717
     locked: 0

@@ -7,8 +7,10 @@ public class Water : Spawnable
 {
     protected override void OnPickup(Collider2D collision)
     {
+        base.OnPickup(collision);
+
         collision.GetComponent<WaterTank>()?.Fill();
 
-        collision.GetComponent<Tree>()?.Water();
+        collision.GetComponentInParent<TreeOfLife>()?.Water();
     }
 }

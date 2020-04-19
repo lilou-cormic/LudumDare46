@@ -6,18 +6,18 @@ using PurpleCable;
 public class GameManager : Singleton<GameManager>
 {
     public static int WaterTankCapacity { get; private set; }
-    public static int WaterNeededToGrow { get; private set; }
-    public static int GrowthStageCount { get; private set; }
+
     public static float WitherDelay { get; private set; }
     public static int MaxHumidity { get; private set; }
+
+    public static float SpawnableSpeed { get; private set; }
 
     private void Awake()
     {
         WaterTankCapacity = PlayerPrefs.GetInt("WaterTankCapacity", 3);
-        WaterNeededToGrow = PlayerPrefs.GetInt("WaterNeededToGrow", 3);
-        GrowthStageCount = PlayerPrefs.GetInt("GrowthStageCount", 3);
         WitherDelay = PlayerPrefs.GetFloat("WitherDelay", 10f);
         MaxHumidity = PlayerPrefs.GetInt("MaxHumidity", 3);
+        SpawnableSpeed = PlayerPrefs.GetFloat("SpawnableSpeed", 2.5f);
     }
 
     protected override void Start()
@@ -27,17 +27,21 @@ public class GameManager : Singleton<GameManager>
         ScoreManager.ResetScore();
     }
 
-    public void Win()
+    public static IEnumerator Win()
     {
         ScoreManager.SetHighScore();
 
-        StartCoroutine(MainMenu.GoToScene("Win"));
+        yield return new WaitForSeconds(1f);
+
+        yield return MainMenu.GoToScene("Win");
     }
 
-    public void GameOver()
+    public static IEnumerator GameOver()
     {
         ScoreManager.SetHighScore();
 
-        StartCoroutine(MainMenu.GoToScene("GameOver"));
+        yield return new WaitForSeconds(1f);
+
+        yield return MainMenu.GoToScene("GameOver");
     }
 }

@@ -6,6 +6,8 @@ public class Fire : Spawnable
 {
     protected override void OnPickup(Collider2D collision)
     {
-        collision.GetComponent<Tree>()?.Wither();
+        base.OnPickup(collision);
+
+        collision.GetComponent<TreeOfLife>()?.Wither();
     }
 }
