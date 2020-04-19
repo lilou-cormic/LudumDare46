@@ -8,6 +8,6 @@ public class Fire : Spawnable
     {
         base.OnPickup(collision);
 
-        collision.GetComponent<TreeOfLife>()?.Wither();
+        collision.GetComponentInParent<TreeOfLife>()?.Wither();
     }
 }

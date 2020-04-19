@@ -65,6 +65,17 @@ namespace PurpleCable
         }
 
         /// <summary>
+        /// Set points as the current score and triggers ScoreChanged
+        /// </summary>
+        /// <param name="points">The number of points to be set</param>
+        public static void SetPoints(int points)
+        {
+            Score = points;
+
+            ScoreChanged?.Invoke();
+        }
+
+        /// <summary>
         /// Sets the best score, saves it, and triggers ScoreChanged
         /// </summary>
         public static void SetHighScore()

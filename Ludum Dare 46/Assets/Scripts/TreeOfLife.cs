@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using PurpleCable;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -29,6 +30,8 @@ public class TreeOfLife : MonoBehaviour
     {
         _witherTimer = GameManager.WitherDelay;
 
+        ScoreManager.SetPoints(_currentHumidity);
+
         GrowthStages[_growthStage].SetHumididy(_currentHumidity);
     }
 
@@ -47,6 +50,8 @@ public class TreeOfLife : MonoBehaviour
     {
         if (_currentHumidity < GameManager.MaxHumidity)
         {
+            ScoreManager.AddPoints(1);
+
             _currentHumidity++;
             return;
         }
@@ -57,17 +62,20 @@ public class TreeOfLife : MonoBehaviour
     public void Grow()
     {
         GrowthStages[_growthStage++].gameObject.SetActive(false);
-        GrowthStages[_growthStage].gameObject.SetActive(true);
 
         if (_growthStage >= GrowthStages.Length - 1)
         {
             GrowthStages.Last().gameObject.SetActive(true);
+
+            GrowthStages.Last().SetHumididy(GameManager.MaxHumidity);
 
             StartCoroutine(GameManager.Win());
 
             enabled = false;
             return;
         }
+
+        GrowthStages[_growthStage].gameObject.SetActive(true);
 
         Wither();
     }
@@ -83,6 +91,8 @@ public class TreeOfLife : MonoBehaviour
             enabled = false;
             return;
         }
+
+        ScoreManager.SetPoints(_currentHumidity);
 
         GrowthStages[_growthStage].SetHumididy(_currentHumidity);
 

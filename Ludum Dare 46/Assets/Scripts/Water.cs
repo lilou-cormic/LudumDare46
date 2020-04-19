@@ -4,7 +4,7 @@ using UnityEngine;
 using PurpleCable;
 
 public class Water : Spawnable
-{
+{ 
     protected override void OnPickup(Collider2D collision)
     {
         base.OnPickup(collision);

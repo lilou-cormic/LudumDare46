@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
         if (GetY() < -10)
         {
             StartCoroutine(GameManager.GameOver());
+            enabled = false;
         }
 
         float horizontal = Input.GetAxis("Horizontal");

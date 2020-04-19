@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class Spawnable : Item
+public abstract class Spawnable : Item, IPoolable
 {
     private Rigidbody2D rb = null;
 
     [SerializeField] SpriteRenderer SpriteRenderer = null;
 
-    private int dd = 1;
+    private int direction = 1;
 
     protected virtual void Awake()
     {
@@ -27,7 +27,7 @@ public abstract class Spawnable : Item
         if (IsTaken)
             return;
 
-        MoveController.Move(transform, SpriteRenderer, dd, GameManager.SpawnableSpeed);
+        MoveController.Move(transform, SpriteRenderer, direction, GameManager.SpawnableSpeed);
     }
 
     protected override bool CanPickup(Collider2D collision)
@@ -42,6 +42,30 @@ public abstract class Spawnable : Item
 
     public void UTurn()
     {
-        dd *= -1;
+        direction *= -1;
     }
+
+    public void SetDirection(bool isLeft)
+    {
+        direction = (isLeft ? -1 : 1);
+    }
+
+    #region IPoolable
+
+    public bool IsInUse { get; private set; } = true;
+
+    public void SetAsAvailable()
+    {
+        IsInUse = false;
+        gameObject.SetActive(false);
+        Reset();
+    }
+
+    public void SetAsInUse()
+    {
+        IsInUse = true;
+        gameObject.SetActive(true);
+    }
+
+    #endregion
 }

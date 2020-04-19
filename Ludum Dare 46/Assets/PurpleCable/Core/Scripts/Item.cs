@@ -20,10 +20,9 @@ namespace PurpleCable
         #region Data
 
         /// <summary>
-        /// Indicates if the item has already been taken [To manage multi-frames / simultanious collisions]
+        /// If the item has been taken
         /// </summary>
-        private bool _isTaken = false;
-        protected bool IsTaken => _isTaken;
+        protected bool IsTaken { get; private set; } = false;
 
         #endregion
 
@@ -32,7 +31,7 @@ namespace PurpleCable
         private void OnTriggerEnter2D(Collider2D collision)
         {
             // Do nothing if already taken [To manage multi-frames / simultanious collisions]
-            if (_isTaken)
+            if (IsTaken)
                 return;
 
             // Do nothing if it's determined that it can't be picked up
@@ -40,7 +39,7 @@ namespace PurpleCable
                 return;
 
             // Flag as taken
-            _isTaken = true;
+            IsTaken = true;
 
             // Play pick up sound
             PickupSound.Play();
@@ -48,13 +47,24 @@ namespace PurpleCable
             // Do logic for when pick up (like add to inventory, heal, etc.)
             OnPickup(collision);
 
-            // Destroy instance
-            Destroy(gameObject);
+            // Remove instance
+            if (this is IPoolable poolable)
+                poolable.SetAsAvailable();
+            else
+                Destroy(gameObject);
         }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected virtual void Reset()
+        {
+            IsTaken = false;
+        }
 
         /// <summary>
         /// Determines if the item can be picked up (true by default) [override for logic (check stats, etc.)]

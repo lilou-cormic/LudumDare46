@@ -20,8 +20,8 @@ TagManager:
   - EnemyBullets
   - Level
   - Item
-  - TreeOfLife
-  - 
+  - Tree
+  - Soil
   - 
   - 
   - 
@@ -48,11 +48,11 @@ TagManager:
   - name: Level
     uniqueID: 2463457405
     locked: 0
-  - name: TreeOfLife
-    uniqueID: 212734081
-    locked: 0
   - name: Elements
     uniqueID: 3894730965
+    locked: 0
+  - name: TreeOfLife
+    uniqueID: 212734081
     locked: 0
   - name: Bullets
     uniqueID: 2321619159

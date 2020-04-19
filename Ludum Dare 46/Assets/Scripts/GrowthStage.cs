@@ -5,24 +5,15 @@ using UnityEngine;
 
 public class GrowthStage : MonoBehaviour
 {
-    [SerializeField] SpriteRenderer SpriteRenderer = null;
+    [SerializeField] SpriteRenderer[] SpriteRenderers = null;
 
     internal void SetHumididy(int currentHumidity)
     {
-        switch (currentHumidity)
+        for (int i = 0; i < SpriteRenderers.Length; i++)
         {
-            case 0:
-                SpriteRenderer.color = Color.red;
-                break;
-
-            case 1:
-                SpriteRenderer.color = Color.gray;
-                break;
-
-            case 2:
-            default:
-                SpriteRenderer.color = Color.white;
-                break;
+            SpriteRenderers[i].gameObject.SetActive(false);
         }
+
+        SpriteRenderers[currentHumidity - 1].gameObject.SetActive(true);
     }
 }
