@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using PurpleCable;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,6 +32,12 @@ public class Player : MonoBehaviour
         waterTank = GetComponent<WaterTank>();
 
         waterTank.WaterLevelChanged += Player_WaterLevelChanged;
+    }
+
+    private void Start()
+    {
+        //HACK
+        ScoreManager.ResetScore();
     }
 
     private void OnDestroy()

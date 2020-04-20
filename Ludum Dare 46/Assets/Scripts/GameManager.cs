@@ -15,6 +15,8 @@ public class GameManager : Singleton<GameManager>
 
     public static float SpawnableSpeed { get; private set; }
 
+    public static bool IsDone { get; private set; }
+
     private void Awake()
     {
         WaterTankCapacity = PlayerPrefs.GetInt("WaterTankCapacity", 3);
@@ -23,15 +25,10 @@ public class GameManager : Singleton<GameManager>
         SpawnableSpeed = PlayerPrefs.GetFloat("SpawnableSpeed", 2.5f);
     }
 
-    protected override void Start()
-    {
-        base.Start();
-
-        ScoreManager.ResetScore();
-    }
-
     public static IEnumerator Win()
     {
+        IsDone = true;
+
         ScoreManager.SetHighScore();
 
         Instance.WinSound.Play();
@@ -43,6 +40,8 @@ public class GameManager : Singleton<GameManager>
 
     public static IEnumerator GameOver()
     {
+        IsDone = true;
+
         ScoreManager.SetHighScore();
 
         Instance.GameOverSound.Play();

@@ -455,6 +455,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 182603910}
     m_Modifications:
+    - target: {fileID: 182402201959978548, guid: 124f85dc758824643aadcdd289d21a01,
+        type: 3}
+      propertyPath: TestSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 91401815463c1c74a9e2c61750ee15db, type: 3}
     - target: {fileID: 7432818828557372586, guid: 124f85dc758824643aadcdd289d21a01,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1403,7 +1408,7 @@ PrefabInstance:
     - target: {fileID: 2901855970248396497, guid: 8730914f11f3ee04b96f96df930974c6,
         type: 3}
       propertyPath: m_text
-      value: Settings
+      value: settings
       objectReference: {fileID: 0}
     - target: {fileID: 2901855970248396497, guid: 8730914f11f3ee04b96f96df930974c6,
         type: 3}
