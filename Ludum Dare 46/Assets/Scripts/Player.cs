@@ -9,14 +9,15 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    [SerializeField]
-    private Animator Animator = null;
+    private WaterTank waterTank;
 
-    [SerializeField]
-    private SpriteRenderer SpriteRenderer = null;
+    [SerializeField] Animator Animator = null;
 
-    [SerializeField]
-    private AudioClip JumpSound = null;
+    [SerializeField] SpriteRenderer SpriteRenderer = null;
+
+    [SerializeField] AudioClip JumpSound = null;
+
+    [SerializeField] GameObject WaterProjectile = null;
 
     public float MovementSpeed = 3;
     public float JumpForce = 400;
@@ -26,6 +27,15 @@ public class Player : MonoBehaviour
         _instance = this;
 
         rb = GetComponent<Rigidbody2D>();
+
+        waterTank = GetComponent<WaterTank>();
+
+        waterTank.WaterLevelChanged += Player_WaterLevelChanged;
+    }
+
+    private void OnDestroy()
+    {
+        waterTank.WaterLevelChanged -= Player_WaterLevelChanged;
     }
 
     private void Update()
@@ -38,7 +48,7 @@ public class Player : MonoBehaviour
 
         float horizontal = Input.GetAxis("Horizontal");
 
-        MoveController.Move(transform, SpriteRenderer, horizontal, MovementSpeed);
+        MoveController.Move(transform, horizontal, MovementSpeed);
 
         if (Animator.isActiveAndEnabled)
             Animator.SetFloat("Speed", Mathf.Abs(horizontal));
@@ -79,5 +89,10 @@ public class Player : MonoBehaviour
     public static float GetY()
     {
         return _instance.transform.position.y;
+    }
+
+    private void Player_WaterLevelChanged(int waterLevel)
+    {
+        WaterProjectile.SetActive(waterLevel > 0);
     }
 }

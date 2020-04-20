@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using PurpleCable;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,23 @@ public class Fire : Spawnable
     {
         base.OnPickup(collision);
 
-        collision.GetComponentInParent<TreeOfLife>()?.Wither();
+        var tree = collision.GetComponentInParent<TreeOfLife>();
+        if (tree != null)
+        {
+            if (ScoreManager.Score > 50)
+                ScoreManager.AddPoints(-50);
+            else
+                ScoreManager.SetPoints(0);
+
+            tree.Wither();
+        }
+
+        var waterTank = collision.GetComponentInParent<WaterTank>();
+        if (waterTank != null)
+        {
+            ScoreManager.AddPoints(100);
+
+            waterTank.Use();
+        }
     }
 }

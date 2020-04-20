@@ -5,9 +5,18 @@ using UnityEngine;
 
 public class WaterTank : MonoBehaviour
 {
+    [SerializeField] QuantityDisplay WaterTankDisplay = null;
+
     private int _waterLevel;
 
     public event Action<int> WaterLevelChanged;
+
+    private void Start()
+    {
+        WaterTankDisplay.SetMaxQuantity(GameManager.WaterTankCapacity);
+
+        Fill();
+    }
 
     public bool Use()
     {
@@ -31,6 +40,7 @@ public class WaterTank : MonoBehaviour
 
     private void OnWaterLevelChanged()
     {
+        WaterTankDisplay.SetQuantity(_waterLevel);
         WaterLevelChanged?.Invoke(_waterLevel);
     }
 }

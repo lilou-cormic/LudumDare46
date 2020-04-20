@@ -27,7 +27,7 @@ public abstract class Spawnable : Item, IPoolable
         if (IsTaken)
             return;
 
-        MoveController.Move(transform, SpriteRenderer, direction, GameManager.SpawnableSpeed);
+        MoveController.Move(transform, direction, GameManager.SpawnableSpeed);
     }
 
     protected override bool CanPickup(Collider2D collision)

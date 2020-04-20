@@ -5,6 +5,9 @@ using PurpleCable;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField] AudioClip WinSound = null;
+    [SerializeField] AudioClip GameOverSound = null;
+
     public static int WaterTankCapacity { get; private set; }
 
     public static float WitherDelay { get; private set; }
@@ -16,7 +19,7 @@ public class GameManager : Singleton<GameManager>
     {
         WaterTankCapacity = PlayerPrefs.GetInt("WaterTankCapacity", 3);
         WitherDelay = PlayerPrefs.GetFloat("WitherDelay", 10f);
-        MaxHumidity = PlayerPrefs.GetInt("MaxHumidity", 3);
+        MaxHumidity = PlayerPrefs.GetInt("MaxHumidity", 2);
         SpawnableSpeed = PlayerPrefs.GetFloat("SpawnableSpeed", 2.5f);
     }
 
@@ -31,7 +34,9 @@ public class GameManager : Singleton<GameManager>
     {
         ScoreManager.SetHighScore();
 
-        yield return new WaitForSeconds(1f);
+        Instance.WinSound.Play();
+
+        yield return new WaitForSeconds(2f);
 
         yield return MainMenu.GoToScene("Win");
     }
@@ -39,6 +44,8 @@ public class GameManager : Singleton<GameManager>
     public static IEnumerator GameOver()
     {
         ScoreManager.SetHighScore();
+
+        Instance.GameOverSound.Play();
 
         yield return new WaitForSeconds(1f);
 

@@ -93,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsLeft: 1
   StartDelay: 0
-  SpawnDelay: 3.5
+  SpawnDelay: 5
 --- !u!1 &4878647666664032588
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,4 +139,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BatchCount: 10
   Prefab: {fileID: 1610835048928480586, guid: c4aa373cea4d2ca42a5acc3dc97dcfe9, type: 3}
-  _SpawnWeight: 3
+  _SpawnWeight: 2

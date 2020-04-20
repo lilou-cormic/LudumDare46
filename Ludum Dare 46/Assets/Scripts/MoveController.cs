@@ -2,12 +2,12 @@
 
 public static class MoveController
 {
-    public static void Move(Transform transform, SpriteRenderer spriteRenderer, float horizontal, float movementSpeed)
+    public static void Move(Transform transform, float horizontal, float movementSpeed)
     {
         if (horizontal < -0.01)
-            spriteRenderer.flipX = false;
+            transform.localScale = new Vector3(1, transform.localScale.y);
         else if (horizontal > 0.01)
-            spriteRenderer.flipX = true;
+            transform.localScale = new Vector3(-1, transform.localScale.y);
 
         //rb.AddForce(horizontal * Vector2.right * Time.deltaTime * speed, ForceMode2D.Impulse);
         transform.Translate(horizontal * movementSpeed * Time.deltaTime, 0, 0, transform);

@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class TreeOfLife : MonoBehaviour
 {
+    [SerializeField] AudioClip WaterSound = null;
+    [SerializeField] AudioClip GrowSound = null;
+    [SerializeField] AudioClip WitherSound = null;
+
     private int _growthStage = 0;
 
     private int _currentHumidity = 1;
@@ -30,8 +34,6 @@ public class TreeOfLife : MonoBehaviour
     {
         _witherTimer = GameManager.WitherDelay;
 
-        ScoreManager.SetPoints(_currentHumidity);
-
         GrowthStages[_growthStage].SetHumididy(_currentHumidity);
     }
 
@@ -48,11 +50,17 @@ public class TreeOfLife : MonoBehaviour
 
     public void Water()
     {
+        if (!enabled)
+            return;
+
+        WaterSound.Play();
+
         if (_currentHumidity < GameManager.MaxHumidity)
         {
-            ScoreManager.AddPoints(1);
-
             _currentHumidity++;
+
+            GrowthStages[_growthStage].SetHumididy(_currentHumidity);
+
             return;
         }
 
@@ -61,9 +69,19 @@ public class TreeOfLife : MonoBehaviour
 
     public void Grow()
     {
-        GrowthStages[_growthStage++].gameObject.SetActive(false);
+        if (!enabled)
+            return;
 
-        if (_growthStage >= GrowthStages.Length - 1)
+        GrowSound.Play();
+
+        for (int i = 0; i < GrowthStages.Length; i++)
+        {
+            GrowthStages[i].gameObject.SetActive(false);
+        }
+
+        _growthStage++;
+
+        if (_growthStage >= GrowthStages.Length)
         {
             GrowthStages.Last().gameObject.SetActive(true);
 
@@ -82,19 +100,22 @@ public class TreeOfLife : MonoBehaviour
 
     public void Wither()
     {
+        if (!enabled)
+            return;
+
+        WitherSound.Play();
+
         _currentHumidity--;
 
-        if (_currentHumidity <= 0)
+        GrowthStages[_growthStage].SetHumididy(_currentHumidity);
+
+        if (_currentHumidity < 0)
         {
             StartCoroutine(GameManager.GameOver());
 
             enabled = false;
             return;
         }
-
-        ScoreManager.SetPoints(_currentHumidity);
-
-        GrowthStages[_growthStage].SetHumididy(_currentHumidity);
 
         _witherTimer = GameManager.WitherDelay;
     }

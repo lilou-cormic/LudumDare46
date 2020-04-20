@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GrowthStage : MonoBehaviour
@@ -9,11 +10,16 @@ public class GrowthStage : MonoBehaviour
 
     internal void SetHumididy(int currentHumidity)
     {
-        for (int i = 0; i < SpriteRenderers.Length; i++)
+        if (currentHumidity >= 0)
         {
-            SpriteRenderers[i].gameObject.SetActive(false);
+            for (int i = 0; i < SpriteRenderers.Length; i++)
+            {
+                SpriteRenderers[i].gameObject.SetActive(false);
+            }
+
+            SpriteRenderers.ElementAtOrDefault(currentHumidity)?.gameObject.SetActive(true);
         }
 
-        SpriteRenderers[currentHumidity - 1].gameObject.SetActive(true);
+        gameObject.StartAnimations();
     }
 }

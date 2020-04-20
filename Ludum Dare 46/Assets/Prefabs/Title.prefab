@@ -73,8 +73,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4278872832
+  m_fontColor: {r: 0, g: 0.41960788, b: 0.039215688, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 101.15
+  m_fontSize: 103.1
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -171,4 +171,3 @@ MonoBehaviour:
   Tick: 1.5
   MinScale: {x: 0.95, y: 1, z: 1}
   MaxScale: {x: 1, y: 0.95, z: 1}
-  IsOnlyOnMouseOver: 0
