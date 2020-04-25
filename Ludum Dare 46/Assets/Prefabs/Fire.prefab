@@ -206,5 +206,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf31adc8c3ab6549bebdec59c892df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupSound: {fileID: 0}
+  PickupSound: {fileID: 8300000, guid: a6af3a293b7fb9a4ba5698aab40d0efb, type: 3}
   SpriteRenderer: {fileID: 6669879809295442239}

@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
 
     public static float SpawnableSpeed { get; private set; }
 
-    public static bool IsDone { get; private set; }
+    public static bool IsDone { get; set; }
 
     private void Awake()
     {

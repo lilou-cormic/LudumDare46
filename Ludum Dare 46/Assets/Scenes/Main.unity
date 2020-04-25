@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e0705b970fd324c9cf5392e3be4f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaterSound: {fileID: 0}
+  WaterSound: {fileID: 8300000, guid: 91401815463c1c74a9e2c61750ee15db, type: 3}
   GrowSound: {fileID: 8300000, guid: 91b73ab874103154dba8a46c2ddaba1f, type: 3}
   WitherSound: {fileID: 8300000, guid: 4f9b1d3a63080e14d8f09c5a16ae4150, type: 3}
 --- !u!1 &54571623
@@ -1670,7 +1670,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.54509807, g: 0.5764706, b: 0.6862745, a: 1}
+  m_BackGroundColor: {r: 0.6346731, g: 0.5281684, b: 0.7830189, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2409,7 +2409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreText: {fileID: 257731581}
-  ScoreLabel: 'Score:'
+  ScoreLabel: 'Score: '
   BestText: {fileID: 510068187}
   BestLabel: 'Best: '
   Format: 0

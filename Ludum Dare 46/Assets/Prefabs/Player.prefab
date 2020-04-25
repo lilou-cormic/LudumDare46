@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 8188221582632379914}
   SpriteRenderer: {fileID: 3887063203759537201}
-  JumpSound: {fileID: 8300000, guid: 9295e21ddc9a6664eb24613b8f9673d0, type: 3}
+  JumpSound: {fileID: 8300000, guid: 16aa192060e270744a10ee1a36cd9ea4, type: 3}
   WaterProjectile: {fileID: 1125653981}
   MovementSpeed: 7
   JumpForce: 600
